@@ -220,7 +220,7 @@ class MAMEEnv(gym.Env, utils.EzPickle):
 
         # volume -32 and low samplerate 
         # for now since turning off sound properly crashes mame on linux at the moment (2017/01)
-        command = ['mame64'] + [game] + '-nothrottle -window -noautosave -frameskip 0 -volume -32 -skip_gameinfo -noautoframeskip -use_le -learning_environment pythonbinding.so -le_options'.split()
+        command = ['mame64'] + [game] + '-nothrottle -window -noautosave -frameskip 0 -volume -32 -skip_gameinfo -noshow_le -noautoframeskip -use_le -learning_environment pythonbinding.so -le_options'.split()
 
         # -noshow_le 
         # le_options is one parameter, the python bindings of mamele split it into the module name,
@@ -255,7 +255,7 @@ class MAMEEnv(gym.Env, utils.EzPickle):
 
 
     def _get_image(self):
-        return Image.frombuffer("RGBA",(self.width, self.height), self.latest_image_as_string,'raw', ("BGRA",0,1))     
+        return numpy.asarray(Image.frombuffer("RGBA",(self.width, self.height), self.latest_image_as_string,'raw', ("BGRA",0,1)))
 
     @property
     def _n_actions(self):
