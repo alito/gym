@@ -471,3 +471,12 @@ register(
     entry_point='gym.envs.safety:OffSwitchCartpoleProbEnv',
     max_episode_steps=200,
 )
+
+# galaxian mame
+
+register(
+    id='MameGalaxian-v0',
+    entry_point='gym.envs.mame:MAMEEnv',
+    kwargs={'game': 'galaxian', 'frameskip': 1},
+    max_episode_steps=100000,
+)
