@@ -218,9 +218,7 @@ class MAMEEnv(gym.Env, utils.EzPickle):
         this_directory = os.path.realpath(os.path.dirname(__file__))
         passthrough_module = os.path.join(this_directory, 'passthrough')
 
-        # volume -32 and low samplerate 
-        # for now since turning off sound properly crashes mame on linux at the moment (2017/01)
-        command = ['mame64'] + [game] + '-nothrottle -window -noautosave -frameskip 0 -volume -32 -skip_gameinfo -noshow_le -noautoframeskip -use_le -learning_environment pythonbinding.so -le_options'.split()
+        command = ['mame64'] + [game] + '-nothrottle -window -noautosave -frameskip 0 -skip_gameinfo -noshow_le -samplerate 1000 -sound none -noautoframeskip -use_le -learning_environment pythonbinding.so -le_options'.split()
 
         # -noshow_le 
         # le_options is one parameter, the python bindings of mamele split it into the module name,
