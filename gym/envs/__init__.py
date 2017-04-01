@@ -486,3 +486,11 @@ register(
     kwargs={'game': 'galaxian', 'frameskip': 1},
     max_episode_steps=100000,
 )
+
+register(
+    id='MameGalaxian-watch-v0',
+    entry_point='gym.envs.mame:MAMEEnv',
+    kwargs={'game': 'galaxian', 'frameskip': 1, 'watch' : True},
+    max_episode_steps=100000,
+)
+
