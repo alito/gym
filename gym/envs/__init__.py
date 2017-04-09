@@ -482,19 +482,19 @@ register(
     max_episode_steps=200,
 )
 
-# galaxian mame
+# Mame games
+for game_name in 'galaxian circus sidetrac ripcord crash'.split():
+    register(
+        id='Mame%s-v0' % game_name.capitalize(),
+        entry_point='gym.envs.mame:MAMEEnv',
+        kwargs={'game': game_name, 'frameskip': 1},
+        max_episode_steps=100000,
+    )
 
-register(
-    id='MameGalaxian-v0',
-    entry_point='gym.envs.mame:MAMEEnv',
-    kwargs={'game': 'galaxian', 'frameskip': 1},
-    max_episode_steps=100000,
-)
-
-register(
-    id='MameGalaxian-watch-v0',
-    entry_point='gym.envs.mame:MAMEEnv',
-    kwargs={'game': 'galaxian', 'frameskip': 1, 'watch' : True},
-    max_episode_steps=100000,
-)
+    register(
+        id='Mame%s-watch-v0' % game_name.capitalize(),
+        entry_point='gym.envs.mame:MAMEEnv',
+        kwargs={'game': game_name, 'frameskip': 1, 'watch' : True},
+        max_episode_steps=100000,
+    )
 
